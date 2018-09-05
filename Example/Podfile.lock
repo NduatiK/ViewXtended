@@ -1,0 +1,16 @@
+PODS:
+  - ViewXtended (0.1.0)
+
+DEPENDENCIES:
+  - ViewXtended (from `../`)
+
+EXTERNAL SOURCES:
+  ViewXtended:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ViewXtended: e3c1115f00da8c02addadd3bd87062a180cbc8d3
+
+PODFILE CHECKSUM: 14fc47d939f4924e0a18979546cedccdc92b5711
+
+COCOAPODS: 1.5.3
