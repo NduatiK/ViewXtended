@@ -2,9 +2,10 @@
 Pod::Spec.new do |s|
   s.name             = 'ViewXtended'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of ViewXtended.'
+  s.summary          = 'A collection of my favourite view extensions'
 
   s.description      = <<-DESC
+Description: A collection of my favourite view extensions
                        DESC
 
   s.homepage         = 'https://github.com/NduatiK/Encompass'
