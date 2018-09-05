@@ -15,7 +15,6 @@ Description: A collection of my favourite view extensions
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'ViewXtended/Classes/**/*'
-
+  s.source_files  = "Classes", "ViewXtended/**/*.swift"
 
 end
