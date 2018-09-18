@@ -76,8 +76,10 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
         }
     }
 
+    @IBInspectable customInset: CGFloat = 0
+
     open func updateConstant() {
-        self.constant = offset + keyboardVisibleHeight
+        self.constant = offset + keyboardVisibleHeight - customInset
     }
 }
 
