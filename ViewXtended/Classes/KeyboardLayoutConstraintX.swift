@@ -24,7 +24,7 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
         if let userInfo = notification.userInfo {
             if let frameValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
                 let frame = frameValue.cgRectValue
-                keyboardVisibleHeight = frame.size.height
+                keyboardVisibleHeight = frame.size.height - customInset
             }
 
             self.updateConstant()
@@ -79,7 +79,7 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
     @IBInspectable open var customInset: CGFloat = 0
 
     open func updateConstant() {
-        self.constant = offset + keyboardVisibleHeight - customInset
+        self.constant = offset + keyboardVisibleHeight
     }
 }
 
