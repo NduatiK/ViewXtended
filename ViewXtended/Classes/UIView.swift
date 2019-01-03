@@ -13,7 +13,7 @@ extension UIView {
     
     // MARK: - Border
     
-    @IBInspectable public var borderColor: UIColor? {
+    @IBInspectable open var borderColor: UIColor? {
         get {
             guard let color = layer.borderColor else {
                 return nil
@@ -24,7 +24,7 @@ extension UIView {
         }
     }
     
-    @IBInspectable public var borderWidth: CGFloat {
+    @IBInspectable open var borderWidth: CGFloat {
         get {
             return layer.borderWidth
         } set {
@@ -32,7 +32,7 @@ extension UIView {
         }
     }
     
-    @IBInspectable public var cornerRadius: CGFloat {
+    @IBInspectable open var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
         } set {
@@ -42,7 +42,7 @@ extension UIView {
     
     // MARK: - Shadow
     
-    @IBInspectable public var shadowOpacity: Float {
+    @IBInspectable open var shadowOpacity: Float {
         get {
             return layer.shadowOpacity
         } set {
@@ -50,7 +50,7 @@ extension UIView {
         }
     }
     
-    @IBInspectable public var shadowColor: UIColor? {
+    @IBInspectable open var shadowColor: UIColor? {
         get {
             guard let color = layer.shadowColor else {
                 return nil
@@ -61,7 +61,7 @@ extension UIView {
         }
     }
     
-    @IBInspectable public var shadowRadius: CGFloat {
+    @IBInspectable open var shadowRadius: CGFloat {
         get {
             return layer.shadowRadius
         } set {
@@ -69,7 +69,7 @@ extension UIView {
         }
     }
     
-    @IBInspectable public var shadowOffset: CGPoint {
+    @IBInspectable open var shadowOffset: CGPoint {
         get {
             return CGPoint(x: layer.shadowOffset.width, y: layer.shadowOffset.height)
         } set {
