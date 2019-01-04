@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ViewXtended'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'A collection of my favourite view extensions'
 
   s.description      = <<-DESC

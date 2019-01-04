@@ -5,13 +5,22 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
     open var offset: CGFloat = 0
     open var keyboardVisibleHeight: CGFloat = 0
 
-    override open func awakeFromNib() {
-        super.awakeFromNib()
+    init(item: Any, attribute: NSLayoutAttribute, relatedBy: NSLayoutRelation, toItem: Any?, attribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat) {
+        super.init(item: item, attribute: attribute, relatedBy: relatedBy, toItem: toItem, attribute: attribute, multiplier: multiplier, constant: constant)
+        setup()
+    }
 
+    func setup() {
         offset = constant
 
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardLayoutConstraint.keyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardLayoutConstraint.keyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+    }
+
+    override open func awakeFromNib() {
+        super.awakeFromNib()
+        setup()
     }
 
     deinit {
