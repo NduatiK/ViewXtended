@@ -8,28 +8,13 @@
 
 import UIKit
 
-extension UIScrollView {
-    public var visibleFrame: CGRect {
-        return bounds
-    }
-    public var visibleFrameLessInset: CGRect {
-        return UIEdgeInsetsInsetRect(visibleFrame, contentInset)
-    }
-    public var absoluteFrameLessInset: CGRect {
-        return UIEdgeInsetsInsetRect(CGRect(origin: .zero, size: bounds.size), contentInset)
-    }
-    public var innerSize: CGSize {
-        return absoluteFrameLessInset.size
-    }
-    public var offsetFrame: CGRect {
+internal extension UIScrollView {
+    var offsetFrame: CGRect {
         return CGRect(x: -contentInset.left, y: -contentInset.top,
                       width: max(0, contentSize.width - bounds.width + contentInset.right + contentInset.left),
                       height: max(0, contentSize.height - bounds.height + contentInset.bottom + contentInset.top))
     }
-    public func absoluteLocation(for point: CGPoint) -> CGPoint {
-        return point - contentOffset
-    }
-    public func scrollTo(edge: UIRectEdge, animated: Bool) {
+    func scrollTo(edge: UIRectEdge, animated: Bool) {
         let target: CGPoint
         switch edge {
         case UIRectEdge.top:
