@@ -5,8 +5,8 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
     open var offset: CGFloat = 0
     open var keyboardVisibleHeight: CGFloat = 0
 
-    init(item: Any, attribute: NSLayoutAttribute, relatedBy: NSLayoutRelation, toItem: Any?, attribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat) {
-        super.init(item: item, attribute: attribute, relatedBy: relatedBy, toItem: toItem, attribute: attribute, multiplier: multiplier, constant: constant)
+    override public init() {
+        super.init()
         setup()
     }
 
@@ -109,3 +109,5 @@ public class KeyboardLayoutConstraintX: KeyboardLayoutConstraint {
         }
     }
 }
+
+
