@@ -92,14 +92,10 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
     }
 }
 
-// Make KeyboardLayoutConstraint open
 public class KeyboardLayoutConstraintX: KeyboardLayoutConstraint {
 
     @IBInspectable open var inverted: Bool = false
-
-    // make KeyboardLayoutConstraint.updateConstant open
-    // make offset open
-    // make keyboardVisibleHeight open
+    @IBInspectable open var scrollToBottom: Bool = false
 
     override public func updateConstant() {
         if inverted {
@@ -108,6 +104,15 @@ public class KeyboardLayoutConstraintX: KeyboardLayoutConstraint {
             self.constant = offset + keyboardVisibleHeight
         }
     }
+
+    override func keyboardWillShowNotification(_ notification: Notification) {
+        super.keyboardWillShowNotification(notification)
+        if scrollToBottom {
+            if let firstItem = firstItem as? UIScrollView {
+                firstItem.scrollTo(edge: .bottom, animated: true)
+            } else if let secondItem = secondItem as? UIScrollView {
+                secondItem.scrollTo(edge: .bottom, animated: true)
+            }
+        }
+    }
 }
-
-
