@@ -9,14 +9,11 @@
 /* Begin PBXBuildFile section */
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		7CF55016420B9C4F65A26127 /* Pods_ViewXtendedTest_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D457BAB46506F5ADE8201D /* Pods_ViewXtendedTest_Tests.framework */; };
-		A48762D24714246F072A96ED /* Pods_ViewXtended_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10361ABF76E09E14A05F3864 /* Pods_ViewXtended_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04D457BAB46506F5ADE8201D /* Pods_ViewXtendedTest_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViewXtendedTest_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		10361ABF76E09E14A05F3864 /* Pods_ViewXtended_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViewXtended_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C854A9051035EE4CF085F7A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		50D0BE242E8D2387188358CE /* Pods-ViewXtended_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewXtended_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewXtended_Tests/Pods-ViewXtended_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* ViewXtendedTest_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewXtendedTest_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
@@ -24,7 +21,6 @@
 		A50B5DB90FC1B25239030496 /* Pods-ViewXtendedTest_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewXtendedTest_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViewXtendedTest_Tests/Pods-ViewXtendedTest_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D4C0DC2EFBD740B76CBF8266 /* Pods-ViewXtendedTest_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewXtendedTest_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewXtendedTest_Tests/Pods-ViewXtendedTest_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		E97DAFA7225818AA88827038 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		F14B1279BA743CE60E0ABC7E /* Pods-ViewXtended_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewXtended_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViewXtended_Tests/Pods-ViewXtended_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,7 +28,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A48762D24714246F072A96ED /* Pods_ViewXtended_Tests.framework in Frameworks */,
 				7CF55016420B9C4F65A26127 /* Pods_ViewXtendedTest_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,7 +38,6 @@
 		249F9B1E6D10BB679C346FA7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				10361ABF76E09E14A05F3864 /* Pods_ViewXtended_Tests.framework */,
 				04D457BAB46506F5ADE8201D /* Pods_ViewXtendedTest_Tests.framework */,
 			);
 			name = Frameworks;
@@ -98,8 +92,6 @@
 		7B07EFEA36DAA425AFFA5004 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F14B1279BA743CE60E0ABC7E /* Pods-ViewXtended_Tests.debug.xcconfig */,
-				50D0BE242E8D2387188358CE /* Pods-ViewXtended_Tests.release.xcconfig */,
 				A50B5DB90FC1B25239030496 /* Pods-ViewXtendedTest_Tests.debug.xcconfig */,
 				D4C0DC2EFBD740B76CBF8266 /* Pods-ViewXtendedTest_Tests.release.xcconfig */,
 			);
@@ -143,7 +135,6 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = CB34R43GL4;
 						LastSwiftMigration = 0900;
-						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
 			};
@@ -359,7 +350,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViewXtendedTest_Example.app/ViewXtendedTest_Example";
 			};
 			name = Debug;
 		};
@@ -378,7 +368,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViewXtendedTest_Example.app/ViewXtendedTest_Example";
 			};
 			name = Release;
 		};

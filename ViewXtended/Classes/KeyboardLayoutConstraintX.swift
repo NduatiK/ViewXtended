@@ -2,8 +2,14 @@ import UIKit
 
 public class KeyboardLayoutConstraint: NSLayoutConstraint {
 
-    open var offset: CGFloat = 0
+    /// A value that stores the constant at the time of initialization. Lazy so as to not access constant prematurely
+    lazy var originalConstant = constant
+    /// The current height of the keyboard, 0 if hidden
     open var keyboardVisibleHeight: CGFloat = 0
+
+    /// An additional offset experienced when the keyboard is visible
+    /// If positive, the first item is pushed even further up
+    @IBInspectable open var customInset: CGFloat = 0
 
     override public init() {
         super.init()
@@ -11,7 +17,6 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
     }
 
     func setup() {
-        offset = constant
 
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardLayoutConstraint.keyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardLayoutConstraint.keyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -33,7 +38,7 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
         if let userInfo = notification.userInfo {
             if let frameValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
                 let frame = frameValue.cgRectValue
-                keyboardVisibleHeight = frame.size.height - customInset
+                keyboardVisibleHeight = frame.size.height + customInset
             }
 
             self.updateConstant()
@@ -85,34 +90,20 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
         }
     }
 
-    @IBInspectable open var customInset: CGFloat = 0
-
     open func updateConstant() {
-        self.constant = offset + keyboardVisibleHeight
+        self.constant = originalConstant + keyboardVisibleHeight
     }
 }
 
 public class KeyboardLayoutConstraintX: KeyboardLayoutConstraint {
 
     @IBInspectable open var inverted: Bool = false
-    @IBInspectable open var scrollToBottom: Bool = false
 
     override public func updateConstant() {
         if inverted {
-            self.constant = offset - keyboardVisibleHeight
+            self.constant = originalConstant - keyboardVisibleHeight
         } else {
-            self.constant = offset + keyboardVisibleHeight
-        }
-    }
-
-    override func keyboardWillShowNotification(_ notification: Notification) {
-        super.keyboardWillShowNotification(notification)
-        if scrollToBottom {
-            if let firstItem = firstItem as? UIScrollView {
-                firstItem.scrollTo(edge: .bottom, animated: true)
-            } else if let secondItem = secondItem as? UIScrollView {
-                secondItem.scrollTo(edge: .bottom, animated: true)
-            }
+            self.constant = originalConstant + keyboardVisibleHeight
         }
     }
 }

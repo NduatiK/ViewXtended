@@ -13,13 +13,13 @@ class Tests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testKeyboardLayoutConstraintStoresConstantValues() {
         let view = UIView()
         let innerView = UIView()
         view.addSubview(innerView)
 
         let a = KeyboardLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: innerView, attribute: .bottom, multiplier: 1, constant: 10)
-        XCTAssertEqual(a.offset, 10)
+        XCTAssertEqual(a.originalConstant, 10)
     }
     
     func testPerformanceExample() {
