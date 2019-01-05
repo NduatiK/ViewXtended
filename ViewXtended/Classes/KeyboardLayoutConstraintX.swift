@@ -7,6 +7,8 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
     /// The current height of the keyboard, 0 if hidden
     open var keyboardVisibleHeight: CGFloat = 0
 
+    var keyBoardMaxHeight: CGFloat = 0
+
     /// An additional offset experienced when the keyboard is visible
     /// If positive, the first item is pushed even further up
     @IBInspectable open var customInset: CGFloat = 0
@@ -38,13 +40,13 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
         if let userInfo = notification.userInfo {
             if let frameValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
                 let frame = frameValue.cgRectValue
+                keyBoardMaxHeight = frame.size.height
                 keyboardVisibleHeight = frame.size.height + customInset
             }
 
             self.updateConstant()
-            switch (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber, userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber) {
-            case let (.some(duration), .some(curve)):
-
+            if let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber,
+                let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
                 let options = UIViewAnimationOptions(rawValue: curve.uintValue)
 
                 UIView.animate(
@@ -55,24 +57,22 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
                         UIApplication.shared.keyWindow?.layoutIfNeeded()
                         return
                 })
-            default:
-
-                break
             }
-
         }
-
     }
 
     @objc func keyboardWillHideNotification(_ notification: Foundation.Notification) {
-        keyboardVisibleHeight = 0
-        self.updateConstant()
 
         if let userInfo = notification.userInfo {
+            if let frameValue = userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue {
+                let frame = frameValue.cgRectValue
+                keyboardVisibleHeight = frame.size.height + customInset
+            }
+            self.updateConstant()
 
-            switch (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber,
-                    userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber) {
-            case let (.some(duration), .some(curve)):
+            if let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber,
+                let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
+
 
                 let options = UIViewAnimationOptions(rawValue: curve.uintValue)
 
@@ -84,8 +84,6 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
                         UIApplication.shared.keyWindow?.layoutIfNeeded()
                         return
                 })
-            default:
-                break
             }
         }
     }
