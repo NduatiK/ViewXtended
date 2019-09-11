@@ -18,8 +18,8 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
     
     func setup() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardLayoutConstraint.keyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardLayoutConstraint.keyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardLayoutConstraint.keyboardWillShowNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardLayoutConstraint.keyboardWillHideNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
@@ -36,15 +36,15 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
     
     @objc func keyboardWillShowNotification(_ notification: Foundation.Notification) {
         if let userInfo = notification.userInfo {
-            if let frameValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            if let frameValue = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                 let frame = frameValue.cgRectValue
                 keyboardVisibleHeight = frame.size.height + customInset
             }
             
             self.updateConstant()
-            if let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber,
-                let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
-                let options = UIViewAnimationOptions(rawValue: curve.uintValue)
+            if let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
+                let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber {
+                let options = UIView.AnimationOptions(rawValue: curve.uintValue)
                 
                 UIView.animate(
                     withDuration: TimeInterval(duration.doubleValue),
@@ -64,11 +64,11 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
         
         if let userInfo = notification.userInfo {
             
-            if let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber,
-                let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
+            if let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
+                let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber {
                 
                 
-                let options = UIViewAnimationOptions(rawValue: curve.uintValue)
+                let options = UIView.AnimationOptions(rawValue: curve.uintValue)
                 
                 UIView.animate(
                     withDuration: TimeInterval(duration.doubleValue),
