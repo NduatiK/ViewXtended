@@ -1,6 +1,6 @@
 //
 //  WrappedData.swift
-//  TH2G
+//  DesignableX
 //
 //  Created by Nduati Kuria on 29/12/2018.
 //  Copyright © 2018 nduatiKuria. All rights reserved.
